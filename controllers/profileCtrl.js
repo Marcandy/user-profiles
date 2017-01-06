@@ -20,3 +20,23 @@ var profiles = [
     status: 'OMG MITTENS DID THE CUTEST THING TODAY'
   }
 ];
+
+module.exports = {
+
+  getFriends: function (req, res, next) {
+    req.session.currentUser.prof = [];
+    req.session.currentUser.friends.forEach(function (elm, i, arr) {
+      profiles.forEach(function (elm) {
+        if (arr[i] === profiles.elm.name) {
+          req.session.currentUser.prof.push(arr[i])
+        }
+      })
+    })
+    res.status(200).json({
+      currentUser: req.session.currentUser,
+      friends: req.session.currentUser.prof
+    })
+  }
+
+
+}
