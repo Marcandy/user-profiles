@@ -17,9 +17,10 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 
-app.use(bodyParser());
+app.use(bodyParser.json());
 app.use(session({ secret: config.sessionSecret }));
 
+app.post('/api/login', userCtrl.login); // do not invoked them straight away
 
 
 app.listen(4000);
