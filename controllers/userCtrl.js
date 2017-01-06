@@ -25,15 +25,26 @@ module.exports = {
 
   login: function (req, res, next) {
 
-    for (var i = 0; i < users.length; i++) {
-      if (users[i].name == req.body.name) {
-        req.session.currentUser = users[i]
-        res.send({userFound: true})
-      }
-      res.send({userFound: false});
+    var found = users.filter(function (elm) {
+      return (elm.name === req.body.name && elm.password === req.body.password)
+    })
+
+    if (found[0]) {
+      req.session.currentUser = found[0];
+      res.send({ userFound: false })
+    } else {
+      res.send({ userFound: false });
     }
 
-    
+    // for (var i = 0; i < users.length; i++) {
+    //   if (users[i].name == req.body.name) {
+    //     req.session.currentUser = users[i]
+    //     res.send({userFound: true})
+    //   }
+    //   res.send({userFound: false});
+    // }
+
+
   }
 
 

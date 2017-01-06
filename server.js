@@ -23,4 +23,10 @@ app.use(session({ secret: config.sessionSecret }));
 app.post('/api/login', userCtrl.login); // do not invoked them straight away
 
 
+
+console.log(__dirname);
+app.use(express.static(__dirname + '/public'));
+
+
+
 app.listen(4000);
