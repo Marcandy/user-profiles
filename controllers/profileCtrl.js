@@ -25,10 +25,10 @@ module.exports = {
 
   getFriends: function (req, res, next) {
     req.session.currentUser.prof = [];
-    req.session.currentUser.friends.forEach(function (elm, i, arr) {
-      profiles.forEach(function (elm) {
-        if (arr[i] === profiles.elm.name) {
-          req.session.currentUser.prof.push(arr[i])
+    req.session.currentUser.friends.forEach(function (friend) {
+      profiles.forEach(function (profile) {
+        if (friend === profile.name) {
+          req.session.currentUser.prof.push(profile);
         }
       })
     })
