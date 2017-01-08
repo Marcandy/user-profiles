@@ -19,13 +19,14 @@ app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use(session({ secret: config.sessionSecret }));
-
-app.post('/api/login', userCtrl.login); // do not invoked them straight away
-
-
-
 console.log(__dirname);
 app.use(express.static(__dirname + '/public'));
+
+app.post('/api/login', userCtrl.login); // do not invoked them straight away
+app.get('/api/profiles', profileCtrl.getFriends);
+
+
+
 
 
 
