@@ -31,7 +31,8 @@ module.exports = {
 
     if (found[0]) {
       req.session.currentUser = found[0];
-      res.send({ userFound: false })
+      console.log(req.session.currentUser);
+      res.send({ userFound: true })
     } else {
       res.send({ userFound: false });
     }

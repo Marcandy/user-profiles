@@ -24,17 +24,17 @@ var profiles = [
 module.exports = {
 
   getFriends: function (req, res, next) {
-    req.session.currentUser.prof = [];
+    var prof = [];
     req.session.currentUser.friends.forEach(function (friend) {
       profiles.forEach(function (profile) {
         if (friend === profile.name) {
-          req.session.currentUser.prof.push(profile);
+          prof.push(profile);
         }
       })
     })
     res.status(200).json({
       currentUser: req.session.currentUser,
-      friends: req.session.currentUser.prof
+      friends: prof
     })
   }
 
